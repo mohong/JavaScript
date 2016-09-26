@@ -3,8 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>缓动动画</title>
+    <style>
+        #div {
+            width: 100px;
+            height:100px;
+            background-color: grey;
+            margin:20px;
+            position: absolute;
+            left:0;
+        }
+    </style>
 </head>
 <body>
+<h1>缓动运动</h1>
+<button id="btn">开始</button>
+<div id="div"></div>
 
+<script>
+    var div = document.getElementById('div');
+    var btn = document.getElementById('btn');
+    var timer = null;
+    var leader = 0;
+    var target = 600;
+    btn.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+           leader = leader + (target - leader) / 10;
+            div.style.left = leader + "px";
+        },10)
+    }
+
+</script>
 </body>
 </html>
