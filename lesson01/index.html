@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>匀速运动</title>
+    <style>
+        #div {
+            width: 100px;
+            height:100px;
+            background-color: grey;
+            margin:20px;
+            position: absolute;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">开始</button>
+    <div id="div"></div>
+
+    <script>
+        var div = document.getElementById('div');
+        var btn = document.getElementById('btn');
+        var num = 0;
+        var timer = null;
+        btn.onclick = function () {
+            //解决重复点击加速问题
+            //使用定时器之前清除定时器是个好习惯
+            clearInterval(timer);
+            timer = setInterval(function () {
+                num ++;
+                if (num >= 500){
+                    clearInterval(timer);
+                } else {
+                    //div一定要有absoute定位
+                    div.style.left = num + "px";
+                }
+            },10)
+        }
+
+    </script>
+</body>
+</html>
