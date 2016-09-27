@@ -4,74 +4,79 @@
     <meta charset="UTF-8">
     <title>拖动水平条</title>
     <style>
-        body{
-            margin:0;
-            padding:0;
-        }
-        #content {
+        *{margin: 0; padding: 0}
+        .scroll {
+            width: 400px;
+            height:10px;
+            /*background: #25b364;*/
+            border: 1px solid #25b364;
             margin: 100px;
-        }
-
-        #bar {
-            width: 500px;
-            height: 20px;
-            /*background-color: aquamarine;*/
-            border:1px solid aquamarine;
-            border-left: 0;
             position: relative;
-            float: left;
-            margin-right: 20px;
-        }
-
-        #bgBar {
-            height: 20px;
-            background-color: aquamarine;
             border-left: 0;
-            position: relative;
-            float: left;
-            margin-right: 20px;
         }
-
-        #block {
-            width: 20px;
-            height: 40px;
+        .bar {
+            width: 10px;
+            height:20px;
             background-color: burlywood;
             position: absolute;
-            margin-top: -10px;
-        }
-        
-        #block:hover {
+            top: -5px;
             cursor: pointer;
         }
+        .mask {
 
+            height: 10px;
+            background-color: #25b364;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #demo {
+            position: absolute;
+            left: 520px;
+            top: 96px;
+            color: #25b364;
+            font-family:"微软雅黑 Light";
+        }
     </style>
 </head>
 <body>
 
-   <div id="content">
-       <div id="bar">
-           <div id="bgBar">
-               <div id="block"></div>
-           </div>
-       </div>
+    <div class="scroll" id="scrollBar">
+        <div class="bar"></div>
+        <div class="mask"></div>
+    </div>
+    <div id="demo">0%</div>
 
-       <div id="show">拖动滑块试试</div>
-   </div>
 
    <script>
-       var block = document.getElementById('block');
-       var bgBar = document.getElementById('bgBar');
-       var num = 0;
-       block.onmousedown = function () {
-           block.onmousemove = function (event) {
-               num = (event.clientX - 100) - 10;
-               this.style.left = num + 'px';
-               bgBar.style.width = num;
+        var scrollBar = document.getElementById('scrollBar');
+        var bar = scrollBar.children[0];
+        var mask = scrollBar.children[1];
+        var demo = document.getElementById('demo');
+
+       bar.onmousedown = function (event) {
+           var event = event || window.event;
+           var leftVal = event.clientX - this.offsetLeft;
+           var that = this;
+           document.onmousemove = function (event) {
+               var event = event || window.event;
+               that.style.left = event.clientX - leftVal + 'px';
+               var val = parseInt(that.style.left);
+               if (val < 0 ){
+                   that.style.left = 0;
+               } else if (val > 391){
+                   that.style.left = "391px";
+               }
+               mask.style.width = that.style.left;
+               demo.innerHTML = parseInt(parseInt(that.style.left)/390 * 100 ) + '%';
+               window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+           }
+           document.onmouseup = function() {
+               document.onmousemove = null;   // 弹起鼠标不做任何操作
            }
        }
-       block.onmouseup = function () {
 
-       }
+
    </script>
 </body>
 </html>
