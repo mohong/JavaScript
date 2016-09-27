@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标在一个盒子内的坐标</title>
+    <style>
+        body{
+            margin:0;
+            background-color: #e8e8e8;
+        }
+       #div {
+           width: 300px;
+           height: 200px;
+           background-color: olivedrab;
+           position: absolute;
+           left: 100px;
+           top: 50px;
+           color: white;
+       }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <span id="show">把鼠标放上来试试</span>
+    </div>
+
+
+    <script>
+        var div = document.getElementById('div');
+        var show = document.getElementById('show');
+        div.onmousemove = function (event) {
+           show.innerHTML = (event.clientX - 100) + 'px,  ' + (event.clientY - 50) + 'px';
+        }
+    </script>
+</body>
+</html>
