@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖动水平条</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        #content {
+            margin: 100px;
+        }
+
+        #bar {
+            width: 500px;
+            height: 20px;
+            /*background-color: aquamarine;*/
+            border:1px solid aquamarine;
+            border-left: 0;
+            position: relative;
+            float: left;
+            margin-right: 20px;
+        }
+
+        #bgBar {
+            height: 20px;
+            background-color: aquamarine;
+            border-left: 0;
+            position: relative;
+            float: left;
+            margin-right: 20px;
+        }
+
+        #block {
+            width: 20px;
+            height: 40px;
+            background-color: burlywood;
+            position: absolute;
+            margin-top: -10px;
+        }
+        
+        #block:hover {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+   <div id="content">
+       <div id="bar">
+           <div id="bgBar">
+               <div id="block"></div>
+           </div>
+       </div>
+
+       <div id="show">拖动滑块试试</div>
+   </div>
+
+   <script>
+       var block = document.getElementById('block');
+       var bgBar = document.getElementById('bgBar');
+       var num = 0;
+       block.onmousedown = function () {
+           block.onmousemove = function (event) {
+               num = (event.clientX - 100) - 10;
+               this.style.left = num + 'px';
+               bgBar.style.width = num;
+           }
+       }
+       block.onmouseup = function () {
+
+       }
+   </script>
+</body>
+</html>
