@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        .nav{
+            height:30px;
+            background: #036663;
+            border-bottom:1px solid #369;
+            line-height: 30px;
+            padding-left:30px;
+        }
+        .nav a {
+            color:#fff;
+            text-align: center;
+            font-size:14px;
+            text-decoration: none;
+
+        }
+        .d-box{
+            width:300px;
+            height:100px;
+            border:5px solid #eee;
+            box-shadow:2px 2px 2px 2px #666;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -155px;
+            margin-left:-205px;
+
+        }
+        .hd{
+            width:100%;
+            height:25px;
+            background-color: #7c9299;
+            border-bottom:1px solid #369;
+            line-height: 25px;
+            color:white;
+            cursor: move;
+        }
+        #box_close{
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="javascript:;" id="register">注册信息</a>
+</div>
+<div class="d-box" id="d_box">
+    <div class="hd" id="drop">注册信息   (可以拖拽)
+        <span id="box_close">【关闭】</span>
+    </div>
+    <div class="bd">我是内容</div>
+</div>
+</body>
+</html>
+<script>
+    var box = document.getElementById("d_box");
+    var drop = document.getElementById("drop");
+    startDrop(box,drop);
+    function startDrop(box,drop) {
+        drop.onmousedown = function (event) {
+            console.log(111);
+//            计算出被移动的物体距离左边的距离
+            var x = event.clientX - box.offsetLeft;
+//            计算出被移动的物体距离上边的距离
+            var y = event.clientY - box.offsetTop;
+            document.onmousemove = function (event) {
+//              由于给box设置了margin-left和margin-top,而offset的计算不包含margin，需要补上
+                box.style.left = event.clientX - x + 205 + "px";
+                box.style.top = event.clientY - y + 155 + "px";
+            }
+        }
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+</script>
