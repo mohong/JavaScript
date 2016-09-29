@@ -46,6 +46,7 @@
                 olBoxLi[i].style.backgroundColor = bgColor[i];
                 olBoxLi[i].index = i;
                 olBoxLi[i].onclick = function () {
+                    clearInterval(timer);
                     target = ulBoxLi[this.index].offsetTop;
                     timer = setInterval(function () {
                         leader = leader + (target - leader) / 10;
