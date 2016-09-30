@@ -9,7 +9,7 @@
             height:100px;
             background-color: #25b364;
             position: absolute;
-            left:10;
+
         }
     </style>
 </head>
@@ -35,6 +35,8 @@
 
         //封装动画函数
         function animate(obj,target) {
+            //使用定时器前清除一下是个好习惯
+            clearInterval(obj.timer);
             //判断是前进还是后退
             var speed = obj.offsetLeft > target ? -5 : 5;
             obj.timer = setInterval(function () {
