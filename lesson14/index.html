@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装动画函数</title>
+    <style>
+        #block {
+            width:100px;
+            height:100px;
+            background-color: #25b364;
+            position: absolute;
+            left:10;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn200">200</button>
+    <button id="btn400">400</button>
+
+    <div id="block"></div>
+
+
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        $('btn200').onclick = function () {
+            animate($('block'),200);
+        };
+
+        $('btn400').onclick = function () {
+            animate($('block'),400);
+        };
+
+        //封装动画函数
+        function animate(obj,target) {
+            //判断是前进还是后退
+            var speed = obj.offsetLeft > target ? -5 : 5;
+            obj.timer = setInterval(function () {
+                //当差距小于speed的时候停止运动
+                var result = target - obj.offsetLeft;
+                if (Math.abs(result) <= 5){
+                    clearInterval(obj.timer);
+                    obj.style.left = target;
+                }
+                obj.style.left = obj.offsetLeft + speed + "px";
+            },10);
+        }
+
+    </script>
+</body>
+</html>
