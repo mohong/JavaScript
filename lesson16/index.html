@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动动画原理</title>
+    <style>
+        #box {
+            width: 100px;
+            height:100px;
+            background-color: #036663;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <div id="box"></div>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+        var target = 400;
+        var timer = null;
+        btn.onclick = function () {
+            timer = setInterval(function () {
+                var step = (target - box.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                box.style.left = box.offsetLeft + step + "px";
+                if (box.offsetLeft == target){
+                    clearInterval(timer);
+                }
+            },10);
+        }
+    </script>
+</body>
+</html>
