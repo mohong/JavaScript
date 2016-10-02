@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取css属性</title>
+    <style>
+        div {
+            width:100px;
+            height:200px;
+            left: 10px;
+            top:20px;
+            background-color: #036663;
+            opacity:0.4;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        var div = document.getElementById('div');
+        console.log(getStyle(div,"width"));
+
+        function getStyle(obj,attr) {
+            //IE写法
+            if (obj.currentStyle){
+                return obj.currentStyle[attr];
+            } else {
+                //w3c标准写法
+                return window.getComputedStyle(obj,null)[attr];
+            }
+        }
+    </script>
+</body>
+</html>
