@@ -27,12 +27,15 @@ window.onload = function () {
         imgs[i].style.left = scrollWidth + "px";
     }
     //遍历3个按钮
+    var iNow = 0; //用来控制播放张数
     for(var k in spans){
         spans[k].onclick = function () {
             if (this.className == "slider-ctrl-prev"){
                 alert("left");
             }else if (this.className == "slider-ctrl-next"){
-                alert("right");
+                animate(imgs[iNow],{left:-scrollWidth});
+                iNow++;
+                animate(imgs[iNow],{left:0});
             } else {
                 alert("center");
             }
