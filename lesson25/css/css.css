@@ -50,6 +50,7 @@ img {
     width: 30px;
     height:35px;
     opacity: 0.8;
+    cursor: pointer;
 }
 .slider-ctrl-prev {
     left:0;

@@ -18,4 +18,12 @@ window.onload = function () {
         span.innerHTML = imgs.length - i;
         slider_ctrl.insertBefore(span,slider_ctrl.children[1]);
     }
+    var spans = slider_ctrl.children;
+    spans[1].setAttribute("class","slider-ctrl-con current");
+    //移动的距离
+    var scrollWidth = js_slider.clientWidth;
+    //让第一张显示在可视区域，其他的都移动到可视区域右边，让其看不到
+    for(var i=1; i<imgs.length; i++){
+        imgs[i].style.left = scrollWidth + "px";
+    }
 }
