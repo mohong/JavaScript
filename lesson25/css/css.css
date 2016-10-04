@@ -36,6 +36,8 @@ img {
     background: url("../images/icon.png") no-repeat -24px -782px;
     margin:0 5px;
     cursor: pointer;
+    text-indent: -20em;
+    overflow: hidden;
 }
 .current {
     background-position: -24px -762px;
