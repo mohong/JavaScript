@@ -31,7 +31,10 @@ window.onload = function () {
     for(var k in spans){
         spans[k].onclick = function () {
             if (this.className == "slider-ctrl-prev"){
-                alert("left");
+                animate(imgs[iNow],{left:scrollWidth});
+                --iNow<0 ? iNow=imgs.length-1 : iNow ;
+                imgs[iNow].style.left = -scrollWidth + "px";
+                animate(imgs[iNow],{left:0});
             }else if (this.className == "slider-ctrl-next"){
                 animate(imgs[iNow],{left:-scrollWidth});
                 ++iNow>imgs.length-1 ? iNow=0 : iNow ;

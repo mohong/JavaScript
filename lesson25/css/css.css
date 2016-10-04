@@ -10,15 +10,18 @@ img {
     height:265px;
     margin:100px auto;
     position: relative;
+    overflow: hidden;
 }
 .slider {
     width:310px;
     height:220px;
+
 }
 .slider-main {
     width:620px;
     height:220px;
     background-color: #25b364;
+
 }
 .slider-main-img {
     position: absolute;
