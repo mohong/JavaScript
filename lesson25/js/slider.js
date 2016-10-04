@@ -26,4 +26,16 @@ window.onload = function () {
     for(var i=1; i<imgs.length; i++){
         imgs[i].style.left = scrollWidth + "px";
     }
+    //遍历3个按钮
+    for(var k in spans){
+        spans[k].onclick = function () {
+            if (this.className == "slider-ctrl-prev"){
+                alert("left");
+            }else if (this.className == "slider-ctrl-next"){
+                alert("right");
+            } else {
+                alert("center");
+            }
+        }
+    }
 }
