@@ -34,7 +34,8 @@ window.onload = function () {
                 alert("left");
             }else if (this.className == "slider-ctrl-next"){
                 animate(imgs[iNow],{left:-scrollWidth});
-                iNow++;
+                ++iNow>imgs.length-1 ? iNow=0 : iNow ;
+                imgs[iNow].style.left = scrollWidth + "px";
                 animate(imgs[iNow],{left:0});
             } else {
                 alert("center");
