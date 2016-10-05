@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示选择的文字</title>
+    <style>
+        #text {
+            width:300px;
+            margin:100px;
+        }
+        #anothertext {
+            width:300px;
+            margin:100px;
+        }
+        #choosed {
+            width: 100px;
+            height:100px;
+            background: #1e9eb3;
+            position: absolute;
+            left:0;
+            top:0;
+            color: #fa3040;
+            display: none;
+
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="text">能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，能选择显示的内容，</div>
+    <div id="anothertext">选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，选择后不能显示的内容，</div>
+
+    <div id="choosed"></div>
+
+
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        $('text').onmouseup = function (event) {
+
+            //获取鼠标的位置
+            var event = event || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            var txt = "";
+
+            // 判断是否选择了文字
+            if (window.getSelection){
+             //标准
+                txt = window.getSelection().toString();
+            } else {
+            //兼容IE
+                txt = document.selection.createRange().text;
+            }
+
+            //弹出内容框
+            if (txt){
+                show(x,y,txt);
+            }
+        }
+
+        //点击外边空白处隐藏内容
+        window.onclick = function (event) {
+            var event = event || window.event;
+            var targetId = event.target ? event.target.id : event.srcElement.id;
+            if (targetId != 'choosed'){
+                $('choosed').style.display = "none";
+            }
+        }
+
+        //显示函数
+        function show(x,y,txt) {
+           setTimeout(function () {
+               $('choosed').style.left = x + "px";
+               $('choosed').style.top = y + "px";
+               $('choosed').style.display = "block";
+               $('choosed').innerHTML = txt;
+           },100)
+        }
+
+    </script>
+</body>
+</html>

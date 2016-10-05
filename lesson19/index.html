@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装动画函数</title>
+    <style>
+        div {
+            width:100px;
+            height:50px;
+            left: 10px;
+            top:20px;
+            background-color: #036663;
+            opacity:0.4;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">变宽</button>
+    <button id="btn2">变高</button>
+    <div id="div"></div>
+
+    <script>
+        var div = document.getElementById('div');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var timer = null;
+
+        btn1.onclick = function () {
+            animate(div,"width",500);
+        };
+        btn2.onclick = function () {
+            animate(div,"height",500);
+        };
+
+        //封装动画
+        function animate(obj,attr,target) {
+            clearInterval(obj.timer);
+            timer = setInterval(function () {
+                var current = parseInt(getStyle(obj,attr));
+                var step = (target - current) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                obj.style[attr] = current + step + "px";
+                if (current = target){
+                    clearInterval(obj.timer);
+                }
+            },10);
+        }
+
+
+        //得到当前的属性
+        function getStyle(obj,attr) {
+            //IE写法
+            if (obj.currentStyle){
+                return obj.currentStyle[attr];
+            } else {
+                //w3c标准写法
+                return window.getComputedStyle(obj,null)[attr];
+            }
+        }
+
+    </script>
+</body>
+</html>

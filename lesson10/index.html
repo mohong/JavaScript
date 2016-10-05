@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /*检测窗口尺寸*/
+    function client() {
+        if (window.innerWidth != null){
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        }else if (document.compatMode == 'CSS1Compat'){  //有文档申明
+            return {
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight
+            }
+        }
+        /*怪异模式*/
+        return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight
+        }
+    }
+
+    /*初始化，这样首次打开页面就有效果*/
+    onreSize();
+    window.onresize = onreSize;
+
+    /*实现响应式*/
+    function onreSize() {
+        var clientWidth = client().width;
+        if (clientWidth>960){
+            document.body.style.backgroundColor = 'red';
+        } else if (clientWidth>640){
+            document.body.style.backgroundColor = 'blue';
+        }else {
+            document.body.style.backgroundColor = 'yellow';
+        }
+    }
+</script>
