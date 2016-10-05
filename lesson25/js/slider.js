@@ -30,18 +30,34 @@ window.onload = function () {
     var iNow = 0; //用来控制播放张数
     for(var k in spans){
         spans[k].onclick = function () {
+            //点左侧按钮
             if (this.className == "slider-ctrl-prev"){
                 animate(imgs[iNow],{left:scrollWidth});
                 --iNow<0 ? iNow=imgs.length-1 : iNow ;
                 imgs[iNow].style.left = -scrollWidth + "px";
                 animate(imgs[iNow],{left:0});
+            //点右侧按钮
             }else if (this.className == "slider-ctrl-next"){
                 animate(imgs[iNow],{left:-scrollWidth});
                 ++iNow>imgs.length-1 ? iNow=0 : iNow ;
                 imgs[iNow].style.left = scrollWidth + "px";
                 animate(imgs[iNow],{left:0});
             } else {
-                alert("center");
+                var that = this.innerHTML - 1;
+                if (that > iNow){
+                    //做法等同于右侧按钮
+                    //当前的这张慢慢的走出去，
+                    animate(imgs[iNow],{left:-scrollWidth});
+                    //点击的那个索引号快速的走到右侧，310
+                    imgs[that].style.left = scrollWidth + "px";
+                } else if (that < iNow){
+                    //做法等同于左侧按钮
+                    animate(imgs[iNow],{left:scrollWidth});
+                    imgs[that].style.left = -scrollWidth + "px";
+                }
+                //给当前的索引号
+                iNow = that;
+                animate(imgs[that],{left:0});
             }
         }
     }
