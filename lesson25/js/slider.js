@@ -36,12 +36,16 @@ window.onload = function () {
                 --iNow<0 ? iNow=imgs.length-1 : iNow ;
                 imgs[iNow].style.left = -scrollWidth + "px";
                 animate(imgs[iNow],{left:0});
+                //控制底部小方块
+                setSquare();
             //点右侧按钮
             }else if (this.className == "slider-ctrl-next"){
                 animate(imgs[iNow],{left:-scrollWidth});
                 ++iNow>imgs.length-1 ? iNow=0 : iNow ;
                 imgs[iNow].style.left = scrollWidth + "px";
                 animate(imgs[iNow],{left:0});
+                //控制底部小方块的显示
+                setSquare();
             } else {
                 var that = this.innerHTML - 1;
                 if (that > iNow){
@@ -58,7 +62,17 @@ window.onload = function () {
                 //给当前的索引号
                 iNow = that;
                 animate(imgs[that],{left:0});
+                setSquare();
             }
         }
+    }
+    
+    //一个控制播放span的函数
+    function setSquare() {
+        //8个span,去头去尾留中间
+        for(var i=1; i<spans.length-1; i++){
+            spans[i].className = "slider-ctrl-con";
+        }
+        spans[iNow+1].className = "slider-ctrl-con current";
     }
 }
