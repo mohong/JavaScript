@@ -40,12 +40,7 @@ window.onload = function () {
                 setSquare();
             //点右侧按钮
             }else if (this.className == "slider-ctrl-next"){
-                animate(imgs[iNow],{left:-scrollWidth});
-                ++iNow>imgs.length-1 ? iNow=0 : iNow ;
-                imgs[iNow].style.left = scrollWidth + "px";
-                animate(imgs[iNow],{left:0});
-                //控制底部小方块的显示
-                setSquare();
+                autoplay();
             } else {
                 var that = this.innerHTML - 1;
                 if (that > iNow){
@@ -74,5 +69,29 @@ window.onload = function () {
             spans[i].className = "slider-ctrl-con";
         }
         spans[iNow+1].className = "slider-ctrl-con current";
+    }
+
+    //创建定时器，其实定时器就是右侧按钮
+    var timer = null;
+    //开启定时器
+    timer = setInterval(autoplay,2000);
+    function autoplay() {
+        //把右侧按钮的代码复制过来即可
+        animate(imgs[iNow],{left:-scrollWidth});
+        ++iNow>imgs.length-1 ? iNow=0 : iNow ;
+        imgs[iNow].style.left = scrollWidth + "px";
+        animate(imgs[iNow],{left:0});
+        //控制底部小方块的显示
+        setSquare();
+    }
+
+    //鼠标经过，清除定时器
+    js_slider.onmouseover = function () {
+        clearInterval(timer);
+    }
+    //鼠标移开，开启定时器
+    js_slider.onmouseout = function () {
+        clearInterval(timer);
+        timer = setInterval(autoplay,2000);
     }
 }
