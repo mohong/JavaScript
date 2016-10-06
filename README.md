@@ -7,7 +7,11 @@
 - 焦点图 [演示](http://arthas.com.cn/js-effects/lesson03/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson03/index.html)
 - 匀速运动 [演示](http://arthas.com.cn/js-effects/lesson04/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson04/index.html)
 - 点击轮播图 [演示](http://arthas.com.cn/js-effects/lesson05/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson05/index.html)
-
+- 拖动水平条 [演示](http://arthas.com.cn/js-effects/lesson06/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson06/index.html)
+- 拖动窗口 [演示](http://arthas.com.cn/js-effects/lesson07/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson07/index.html)
+- 导航固定 [演示](http://arthas.com.cn/js-effects/lesson08/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson08/index.html)
+- 全屏显示 [演示](http://arthas.com.cn/js-effects/lesson09/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson09/index.html)
+- 响应式 [演示](http://arthas.com.cn/js-effects/lesson10/index.html)  [源码](https://github.com/mohong/js-effects/blob/master/lesson10/index.html)
 ------
 
 # 要点总结
