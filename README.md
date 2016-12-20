@@ -1,4 +1,4 @@
-# js-effects  ![](https://img.shields.io/shippable/5444c5ecb904a4b21567b0ff.svg?maxAge=2592000)
+# JavaScript  ![](https://img.shields.io/shippable/5444c5ecb904a4b21567b0ff.svg?maxAge=2592000)
 一个原生js特效仓库，用来练习js基础。
 
 # 目录
