@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" id="a">
+    <span id="b"></span>
+</div>
+
+<script type="text/javascript">
+    var obj = {};
+    Object.defineProperty(obj, 'hello', {
+            get: function() {
+                // console.log('get val:'+ val);
+                return val;
+            },
+            set: function(newVal) {
+                val = newVal;
+                 bobbleSort(newVal);
+                // console.log('set val:'+ val);
+                document.getElementById('a').value = val;
+                document.getElementById('b').innerHTML = bobbleSort(newVal);
+            }
+        });
+    document.addEventListener('keyup', function(e) {
+        obj.hello = e.target.value;
+    });
+
+    function bobbleSort(string) {
+        var temp;
+        if (string) {
+            var arr = string.split(',');
+            for (var i = 0; i1,9,6,3 < arr.length; i ++) {
+                for (var j = arr.length - 2; j >= i; j--) {
+                    if (parseInt(arr[j]) > parseInt(arr[j + 1])) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+
+                }
+            }
+            return arr;
+        }
+    }
+</script>
+</body>
+</html>
